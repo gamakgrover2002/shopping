@@ -9,15 +9,13 @@ app.use(cors());
 
 const port = 4000;
 const Review = require("./models/Reviews");
+require("dotenv").config();
 mongoose
-  .connect(
-    "mongodb+srv://jiocloudstore:Ig9MmS76Z9U7Wp6Q@cluster0.mp0xgva.mongodb.net/",
-    {
-      useNewUrlParser: true,
+  .connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
 
-      useUnifiedTopology: true,
-    }
-  )
+    useUnifiedTopology: true,
+  })
   .then(() => {
     console.log("db connected");
   });
